@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular 2 QuickStart</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!--1. LOAD LIBRARIES -->
+    <script src="node_modules/core-js/client/shim.min.js"></script> <!--  monkey patches the global context (window) with essential features of ES2015 (ES6). -->
+
+    <!--  Next are the polyfills for Angular2, zone.js and reflect-metadata. -->
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script> <!-- There are alternatives like webpack but we choosse SystemJs. -->
+    <!--
+     All module loaders require configuration and all loader configuration becomes complicated rather quickly as soon as the file structure diversifies
+     and we start thinking about building for production and performance.
+     -->
+    <!-- SystemJS
+    With those cautions in mind, what are we doing in the QuickStart systemjs.config.js configuration file we added earlier? First, we create a map to tell
+     SystemJS where to look when we import some module. Then, we register all our packages to SystemJS: all the project dependencies and our application package, app.
+     Our QuickStart doesn't use all of the listed packages but any substantial application will want many of them and all of the listed packages are required by at
+     least one of the documentation samples.
+
+    There is no runtime harm in listing packages that we don't need as they will only be loaded when requested.#
+
+    In SystemJs The app package tells SystemJS what to do when it sees a request for a module from the app/ folder.
+    Notice that the module name (after from) does not mention a filename extension. In the configuration we tell
+    SystemJS to default the extension to js, a JavaScript file.
+    -->
+    <script>
+        System.import('app').catch(function(err){console.error(err); }); //Import app module which refers to the main file. Catch exception.
+    </script>
+</head>
+<!-- 3. Display the application -->
+<body>
+<my-app>Loading...</my-app> <!-- Remember app.components selects the element named my-app. This is  is where our app lives -->
+<!--
+ When Angular calls the bootstrap function in main.ts, it reads the AppComponent metadata, finds the my-app selector, locates an element
+ tag named my-app, and renders our application's view between those tags.
+ -->
+</body>
+</html>
